@@ -1,315 +1,146 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Buona Vista Youth Network — a youth-led grassroots body focused on advocacy, cohesion and empowerment." />
-  <title>Buona Vista Youth Network</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #10233f;
-      --cream: #f5f1e7;
-      --sand: #ebe7de;
-      --gold: #b7832f;
-      --line: #d6d0c4;
-      --muted: #5b6475;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Manrope', system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--cream);
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-    section { padding: 72px 0; }
-    h1, h2, h3 { line-height: 1.15; margin: 0 0 16px; }
-    h1 { font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 800; }
-    h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; }
-    h3 { font-size: 1.2rem; }
-    em { font-style: normal; color: var(--gold); }
-    p { margin: 0 0 16px; }
-    .label {
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
-    }
-    .button {
-      display: inline-block; padding: 12px 22px; border-radius: 999px;
-      background: var(--ink); color: var(--cream);
-      text-decoration: none; font-weight: 600;
-    }
-    .button.light { background: var(--cream); color: var(--ink); }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Buona Vista Youth Network — a youth-led grassroots body focused on advocacy, cohesion and empowerment.">
+        <title>Buona Vista Youth Network — Youth in motion</title>
+        <link rel="icon" type="image/png" href="static/images/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="static/styles/styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="Buona Vista Youth Network home">
+                <img src="static/images/logo.png" alt="" width="52" height="45">
+                <span>BUONA VISTA<br>YOUTH NETWORK</span>
+            </a>
+            <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+                <a href="about.html">About us</a>
+                <a href="events.html">Events</a>
+                <a href="collaborate.html">Collaborate</a>
+                <a class="mobile-only" href="collaborate.html#join">Get involved ↗</a>
+            </nav>
+            <a class="header-cta" href="collaborate.html#join">Get involved <span>↗</span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        </header>
 
-    /* Header */
-    header { border-bottom: 1px solid var(--line); }
-    header .wrap {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap;
-    }
-    .brand { font-weight: 800; text-decoration: none; letter-spacing: 0.02em; }
-    nav { display: flex; gap: 20px; }
-    nav a { text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-    nav a:hover { color: var(--gold); }
-
-    /* Hero */
-    .hero { padding: 96px 0 72px; }
-    .hero p { font-size: 1.15rem; max-width: 560px; color: var(--muted); }
-
-    /* About */
-    .about { border-top: 1px solid var(--line); }
-    .pillars {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px; margin-top: 32px;
-    }
-    .pillar { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
-    .pillar p { margin: 0; color: var(--muted); }
-
-    /* Events */
-    .events { background: var(--sand); }
-    .events-head {
-      display: flex; justify-content: space-between; align-items: end;
-      gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
-    }
-    .events-head h2 { margin: 0; }
-    .event-list { display: grid; gap: 16px; }
-    .event {
-      display: flex; gap: 24px; align-items: flex-start;
-      background: #fff; border: 1px solid var(--line); border-radius: 12px;
-      padding: 24px; text-decoration: none;
-      transition: border-color .2s, transform .2s;
-    }
-    a.event:hover { border-color: var(--gold); transform: translateY(-2px); }
-    .event-date {
-      flex: 0 0 72px; text-align: center; border-right: 1px solid var(--line); padding-right: 20px;
-    }
-    .event-date b { display: block; font-size: 2rem; line-height: 1; }
-    .event-date span { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; margin-top: 4px; }
-    .event-meta { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 6px; }
-    .event h3 { margin-bottom: 8px; }
-    .event-desc { margin: 0; color: var(--muted); }
-    .event { color: inherit; }
-    a.event { cursor: pointer; }
-    a.event:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-    .event-cta {
-      display: inline-block; margin-top: 14px; padding: 8px 16px; border-radius: 999px;
-      background: var(--ink); color: var(--cream); font-weight: 600; font-size: 0.9rem;
-      transition: background .2s;
-    }
-    a.event:hover .event-cta { background: var(--gold); }
-    .status { color: var(--muted); }
-
-    /* Collaborate */
-    .collab { background: var(--ink); color: var(--cream); text-align: center; }
-    .collab p { max-width: 520px; margin: 0 auto 28px; opacity: 0.85; }
-
-    /* Instagram */
-    .instagram-head { margin-bottom: 28px; }
-    .instagram-head p { color: var(--muted); max-width: 420px; }
-
-    /* Footer */
-    footer { border-top: 1px solid var(--line); padding: 32px 0; font-size: 0.9rem; color: var(--muted); }
-    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    footer .socials { display: flex; gap: 16px; }
-
-    @media (max-width: 600px) {
-      section { padding: 56px 0; }
-      .event { flex-direction: column; gap: 12px; }
-      .event-date {
-        border-right: 0; padding-right: 0; text-align: left;
-        display: flex; align-items: baseline; gap: 8px;
-      }
-      .event-date span { display: inline; margin: 0; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="wrap">
-      <a class="brand" href="#top">✳ BUONA VISTA YOUTH NETWORK</a>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#events">Events</a>
-        <a href="#collaborate">Collaborate</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap">
-        <div class="label">Youth advocacy · cohesion · empowerment</div>
-        <h1>Small steps.<br><em>Big ripples.</em></h1>
-        <p>We bring 15–35 year old youths together to serve the community, build connections and turn fresh ideas into action.</p>
-        <a class="button" href="#events">See what’s happening ↗</a>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about" id="about">
-      <div class="wrap">
-        <div class="label">01 · About us</div>
-        <h2>We believe in <em>showing up.</em></h2>
-        <p style="max-width:600px">Buona Vista Youth Network is a grassroots youth body for people who care about their community. We create the space, spark the conversation and make it easier to turn good ideas into action.</p>
-        <div class="pillars">
-          <div class="pillar">
-            <h3>Advocacy</h3>
-            <p>Ask better questions. Listen to every voice.</p>
-          </div>
-          <div class="pillar">
-            <h3>Cohesion</h3>
-            <p>Big change begins with something you can do today.</p>
-          </div>
-          <div class="pillar">
-            <h3>Empowerment</h3>
-            <p>There’s always room for one more at the table.</p>
-          </div>
+        <main id="top">
+            <section class="hero section-pad">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span class="pulse light"></span> Youth advocacy · cohesion · empowerment</p>
+                    <h1>Small steps.<span>Big ripples.</span></h1>
+                    <p class="hero-intro">We bring 15–35 year old youths together to serve the community, build connections and turn fresh ideas into action.</p>
+                    <div class="hero-actions">
+                        <a class="button button-gold" href="events.html">See what’s happening <span>↗</span></a>
+                        <a class="text-link" href="about.html">Our story <span>↗</span></a>
+                    </div>
+                </div>
+                <div class="hero-art" role="img" aria-label="Illustration of people connecting across a community">
+                    <div class="sun"></div>
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="spark spark-a">✦</div>
+                    <div class="spark spark-b">✦</div>
+                    <div class="person person-one"><i></i><b></b><strong></strong></div>
+                    <div class="person person-two"><i></i><b></b><strong></strong></div>
+                    <div class="person person-three"><i></i><b></b><strong></strong></div>
+                    <div class="hero-sticker">made<br>together <span>♥</span></div>
+                </div>
+            </section>
+        <div class="ticker" aria-hidden="true">
+            <span>MEET <b>✦</b> MAKE <b>✦</b> MOVE <b>✦</b> ADVOCACY <b>✦</b> COHESION <b>✦</b> EMPOWERMENT <b>✦</b>&nbsp;</span>
+            <span>MEET <b>✦</b> MAKE <b>✦</b> MOVE <b>✦</b> ADVOCACY <b>✦</b> COHESION <b>✦</b> EMPOWERMENT <b>✦</b>&nbsp;</span>
+            <span>MEET <b>✦</b> MAKE <b>✦</b> MOVE <b>✦</b> ADVOCACY <b>✦</b> COHESION <b>✦</b> EMPOWERMENT <b>✦</b>&nbsp;</span>
         </div>
-      </div>
-    </section>
 
-    <!-- Events (loaded from Google Sheets) -->
-    <section class="events" id="events">
-      <div class="wrap">
-        <div class="label">02 · What’s on</div>
-        <div class="events-head">
-          <h2>Come as you are.<br><em>Leave inspired.</em></h2>
-        </div>
-        <div class="event-list" id="event-list" aria-live="polite">
-          <p class="status">Loading upcoming events…</p>
-        </div>
-      </div>
-    </section>
+            <section class="about section-pad" id="about">
+                <div class="section-label"><span>01</span><span>About us</span></div>
+                <div class="about-grid">
+                    <h2>We believe<br>in <em>showing up.</em></h2>
+                    <div class="about-body">
+                        <p>We are the youth representative grassroots body serving residents in Buona Vista Constituency. We create the space, spark the conversation and make it easier to turn good ideas into action.</p>
+                        <a class="text-link" href="about.html">Meet the network <span>↗</span></a>
+                    </div>
+                </div>
+                <div class="principles">
+                    <div class="principle">
+                        <b>01</b>
+                        <h3>Advocacy</h3>
+                        <p>Ask better questions. Listen to every voice.</p>
+                    </div>
+                    <div class="principle">
+                        <b>02</b>
+                        <h3>Cohesion</h3>
+                        <p>Big change begins with something you can do today.</p>
+                    </div>
+                    <div class="principle">
+                        <b>03</b>
+                        <h3>Empowerment</h3>
+                        <p>There’s always room for one more at the table.</p>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Collaborate -->
-    <section class="collab" id="collaborate">
-      <div class="wrap">
-        <div class="label">Have an idea?</div>
-        <h2>Let’s make <em>some noise.</em></h2>
-        <p>Whether you’re an individual, a community group or an organisation — we’d love to hear what you’re working on.</p>
-        <a class="button light" href="collaborate.html">Say hello ↗</a>
-      </div>
-    </section>
+            <section class="events section-pad" id="events">
+                <div class="section-label"><span>02</span><span>What’s on</span></div>
+                <div class="events-heading">
+                    <h2>Come as you are.<br><em>Leave inspired.</em></h2>
+                    <a class="text-link" href="events.html">View all events <span>↗</span></a>
+                </div>
+                <!-- Loaded live from Google Sheets (static/scripts/events.js). data-max = number shown -->
+                <div class="event-list" data-events data-max="3" aria-live="polite"></div>
+            </section>
 
-    <!-- Instagram -->
-    <section class="instagram">
-      <div class="wrap">
-        <div class="label">03 · From the community</div>
-        <div class="instagram-head">
-          <h2>See what’s <em>in motion.</em></h2>
-          <p>Ideas, moments and updates from the Buona Vista Youth Network community.</p>
-        </div>
-        <!-- Elfsight Instagram Feed -->
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-b3876218-1d9f-4913-8c7c-924358e81ab9" data-elfsight-app-lazy></div>
-      </div>
-    </section>
+            <section class="collaborate section-pad">
+                <div class="collab-inner">
+                    <p class="eyebrow"><span class="pulse light"></span> Have an idea?</p>
+                    <h2>Let’s make<br><em>some noise.</em></h2>
+                    <p>Whether you’re an individual, a community group or an organisation — we’d love to hear what you’re working on.</p>
+                    <div class="collab-actions">
+                        <a class="button button-gold" href="collaborate.html">Collaborate with us <span>↗</span></a>
+                        <a class="button button-outline" href="collaborate.html#join">Join the network <span>↗</span></a>
+                    </div>
+                </div>
+                <div class="collab-doodle" aria-hidden="true"><img src="static/images/logo.png" alt=""></div>
+            </section>
 
-  </main>
+            <section class="instagram section-pad">
+                <div class="section-label"><span>03</span><span>From the community</span></div>
+                <div class="instagram-heading">
+                    <h2>See what’s<br><em>in motion.</em></h2>
+                    <p>Ideas, moments and updates from the Buona Vista Youth Network community. Follow us at <a class="text-link" href="https://www.instagram.com/buonavistayn/" target="_blank" rel="noopener">@buonavistayn</a></p>
+                </div>
+                <!-- Elfsight Instagram Feed -->
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-b3876218-1d9f-4913-8c7c-924358e81ab9" data-elfsight-app-lazy></div>
+            </section>
+        </main>
 
-  <footer>
-    <div class="wrap">
-      <span>© 2026 Buona Vista Youth Network · Built by young people, for a more connected community.</span>
-      <div class="socials">
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="TikTok">TikTok</a>
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-  (function () {
-    var EVENTS_API_URL = 'https://script.google.com/macros/s/AKfycbyMGNVZcZRseccEepdl7AhER9h47SS64PV6-1iE0__QnXdWJ3fk6WcJJT3d0SBRDvmC/exec';
-    var MAX_EVENTS = 6; // how many upcoming events to show
-
-    var list = document.getElementById('event-list');
-
-    function el(tag, className, text) {
-      var node = document.createElement(tag);
-      if (className) node.className = className;
-      if (text) node.textContent = text;
-      return node;
-    }
-
-    function showStatus(message) {
-      list.innerHTML = '';
-      list.appendChild(el('p', 'status', message));
-    }
-
-    // Turns whatever is in the Link column into a proper URL
-    // e.g. "forms.gle/abc" -> "https://forms.gle/abc", "hello@x.com" -> "mailto:hello@x.com"
-    function cleanLink(value) {
-      var url = String(value || '').trim();
-      if (!url) return '';
-      if (/^(https?:|mailto:)/i.test(url)) return url;
-      if (/^[^\s@\/]+@[^\s@\/]+\.[a-z]{2,}$/i.test(url)) return 'mailto:' + url;
-      if (/\s/.test(url) || url.indexOf('.') === -1) return ''; // not a web address
-      return 'https://' + url.replace(/^\/+/, '');
-    }
-
-    function buildCard(ev) {
-      var link = cleanLink(ev.link);
-
-      // The whole card is clickable and opens the event's link
-      var card = el(link ? 'a' : 'article', 'event');
-      if (link) {
-        card.href = link;
-        if (!/^mailto:/i.test(link)) {
-          card.target = '_blank';   // open in a new tab
-          card.rel = 'noopener noreferrer';
-        }
-        card.setAttribute('aria-label', ev.name + ' — sign up (opens link)');
-      }
-
-      var date = el('div', 'event-date');
-      if (ev.day) {
-        date.appendChild(el('b', '', ev.day));
-        date.appendChild(el('span', '', ev.month + ' ' + ev.year));
-      } else {
-        date.appendChild(el('span', '', ev.dateText || 'TBC'));
-      }
-      card.appendChild(date);
-
-      var body = el('div');
-      var meta = [ev.type, ev.location].filter(Boolean).join(' · ');
-      if (meta) body.appendChild(el('div', 'event-meta', meta));
-      body.appendChild(el('h3', '', ev.name));
-      if (ev.description) body.appendChild(el('p', 'event-desc', ev.description));
-      if (link) body.appendChild(el('span', 'event-cta', 'Sign up ↗'));
-      card.appendChild(body);
-
-      return card;
-    }
-
-    fetch(EVENTS_API_URL)
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        if (data.error) throw new Error(data.error);
-        var events = (data.events || []).slice(0, MAX_EVENTS);
-        if (!events.length) {
-          showStatus('No upcoming events just yet — check back soon.');
-          return;
-        }
-        list.innerHTML = '';
-        events.forEach(function (ev) { list.appendChild(buildCard(ev)); });
-      })
-      .catch(function (err) {
-        console.error('Could not load events:', err);
-        showStatus('We couldn’t load events right now. Please try again later.');
-      });
-  })();
-  </script>
-</body>
+        <footer class="site-footer">
+            <div>
+                <div class="footer-brand">
+                    <img src="static/images/logo.png" alt="" width="56" height="48">
+                    <span>BUONA VISTA<br>YOUTH NETWORK</span>
+                </div>
+                <p style="margin-top:18px">Built by young people,<br>for a more connected community.</p>
+            </div>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="about.html">About us</a>
+                <a href="events.html">Events</a>
+                <a href="collaborate.html">Collaborate</a>
+                <a href="collaborate.html#join">Join us</a>
+            </nav>
+            <div class="socials">
+                <a href="https://www.instagram.com/buonavistayn/" target="_blank" rel="noopener" aria-label="Instagram @buonavistayn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+                <a href="https://t.me/bvyouths" target="_blank" rel="noopener" aria-label="Telegram @bvyouths"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2l-4.7-1.5c-1-.3-1-1 .2-1.5l18.5-7.1c.9-.3 1.6.2 1.4 1.2z"/></svg></a>
+                <a href="mailto:youths@bv.sg" aria-label="Email youths@bv.sg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+            </div>
+            <small>© <span data-year>2026</span> Buona Vista Youth Network · c/o Buona Vista Community Club</small>
+        </footer>
+        <script src="static/scripts/script.js"></script>
+        <script src="static/scripts/events.js"></script>
+    </body>
 </html>
