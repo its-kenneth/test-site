@@ -6,7 +6,7 @@
    data-max = how many events to show (leave out to show all)
    ========================================================== */
 (function () {
-    var EVENTS_API_URL = 'https://script.google.com/macros/s/AKfycby0qUA9UC6n0vnZd1xOS5iZWVLcnUV6UMrts5c7TtEYjoANr0Uw25MSdaS-8fpRjJ7z/exec';
+    var EVENTS_API_URL = 'https://script.google.com/macros/s/AKfycbyMGNVZcZRseccEepdl7AhER9h47SS64PV6-1iE0__QnXdWJ3fk6WcJJT3d0SBRDvmC/exec';
 
     var lists = document.querySelectorAll('[data-events]');
     if (!lists.length) return;
