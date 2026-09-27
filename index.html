@@ -93,7 +93,15 @@
     .event-meta { font-size: 0.85rem; font-weight: 600; color: var(--gold); margin-bottom: 6px; }
     .event h3 { margin-bottom: 8px; }
     .event-desc { margin: 0; color: var(--muted); }
-    .event-cta { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 0.9rem; }
+    .event { color: inherit; }
+    a.event { cursor: pointer; }
+    a.event:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .event-cta {
+      display: inline-block; margin-top: 14px; padding: 8px 16px; border-radius: 999px;
+      background: var(--ink); color: var(--cream); font-weight: 600; font-size: 0.9rem;
+      transition: background .2s;
+    }
+    a.event:hover .event-cta { background: var(--gold); }
     .status { color: var(--muted); }
 
     /* Collaborate */
@@ -220,7 +228,7 @@
 
   <script>
   (function () {
-    var EVENTS_API_URL = 'https://script.google.com/macros/s/AKfycby0qUA9UC6n0vnZd1xOS5iZWVLcnUV6UMrts5c7TtEYjoANr0Uw25MSdaS-8fpRjJ7z/exec';
+    var EVENTS_API_URL = 'https://script.google.com/macros/s/AKfycbyMGNVZcZRseccEepdl7AhER9h47SS64PV6-1iE0__QnXdWJ3fk6WcJJT3d0SBRDvmC/exec';
     var MAX_EVENTS = 6; // how many upcoming events to show
 
     var list = document.getElementById('event-list');
@@ -237,13 +245,29 @@
       list.appendChild(el('p', 'status', message));
     }
 
+    // Turns whatever is in the Link column into a proper URL
+    // e.g. "forms.gle/abc" -> "https://forms.gle/abc", "hello@x.com" -> "mailto:hello@x.com"
+    function cleanLink(value) {
+      var url = String(value || '').trim();
+      if (!url) return '';
+      if (/^(https?:|mailto:)/i.test(url)) return url;
+      if (/^[^\s@\/]+@[^\s@\/]+\.[a-z]{2,}$/i.test(url)) return 'mailto:' + url;
+      if (/\s/.test(url) || url.indexOf('.') === -1) return ''; // not a web address
+      return 'https://' + url.replace(/^\/+/, '');
+    }
+
     function buildCard(ev) {
-      // Whole card is a link when there's a signup link
-      var card = el(ev.link ? 'a' : 'article', 'event');
-      if (ev.link) {
-        card.href = ev.link;
-        card.target = '_blank';
-        card.rel = 'noopener';
+      var link = cleanLink(ev.link);
+
+      // The whole card is clickable and opens the event's link
+      var card = el(link ? 'a' : 'article', 'event');
+      if (link) {
+        card.href = link;
+        if (!/^mailto:/i.test(link)) {
+          card.target = '_blank';   // open in a new tab
+          card.rel = 'noopener noreferrer';
+        }
+        card.setAttribute('aria-label', ev.name + ' — sign up (opens link)');
       }
 
       var date = el('div', 'event-date');
@@ -260,7 +284,7 @@
       if (meta) body.appendChild(el('div', 'event-meta', meta));
       body.appendChild(el('h3', '', ev.name));
       if (ev.description) body.appendChild(el('p', 'event-desc', ev.description));
-      if (ev.link) body.appendChild(el('span', 'event-cta', 'Sign up ↗'));
+      if (link) body.appendChild(el('span', 'event-cta', 'Sign up ↗'));
       card.appendChild(body);
 
       return card;
